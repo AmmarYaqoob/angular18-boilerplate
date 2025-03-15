@@ -1,0 +1,22 @@
+.drawingWrapper {
+  position: relative;
+}
+
+.drawing {
+  position: absolute;
+  left: 0;
+}
+
+.drawing:hover {
+  cursor: crosshair;
+}
+
+.generateDrawingBoxes {
+  position: absolute;
+  border: 3px solid #274fc2;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.generateDrawingBoxes:hover {
+    background-color: rgb(40 80 195 / 42%);
+}

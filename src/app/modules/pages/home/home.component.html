@@ -8,6 +8,32 @@
                 class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
     </div>
 
+    <div class="canvasWrapper">
+        <div>
+            <input type="file" name="file" (change)="onUpload($event)" class="btn" />
+            <button (click)="savedImgRectData()" class="btn btn-primary">Save</button>
+        </div>
+
+        <div class="drawingWrapper" #wrapper>
+            <img [src]="uploadedImage">
+            <canvas class="drawing" *ngIf="isSaveImgRectData == false" #canvas (mousedown)="dragStart($event)"
+                (mousemove)="drag($event)"></canvas>
+        </div>
+    </div>
+
+
+
+
+    <!-- <div>
+
+         <button (click)="generateCanvas()">Clear canvas </button> 
+        <input type="file" name="file" (change)="OnUpload($event)" />
+        <img [src]="uploadedImage">
+
+        <canvas class="drawingwrapper" #canvas (mousedown)="dragStart($event)" (mousemove)="drag($event)"></canvas>
+
+    </div> -->
+
     <!-- Content Row -->
     <div class="row">
 
@@ -84,7 +110,8 @@
             <app-card Heading="Development Approach">
                 <div class="text-center">
                     <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
-                        src="https://unblast.com/wp-content/uploads/2020/03/App-Development-Illustration-1.jpg" alt="...">
+                        src="/development.jpg"
+                        alt="...">
                 </div>
                 <p>Add some quality, svg illustrations to your project courtesy of <a target="_blank" rel="nofollow"
                         href="https://undraw.co/">unDraw</a>, a

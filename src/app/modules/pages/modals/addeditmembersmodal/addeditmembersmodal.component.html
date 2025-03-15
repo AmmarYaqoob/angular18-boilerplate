@@ -1,0 +1,34 @@
+<div class="modal-header">
+    <button type="button" class="close" (click)="activeModal.dismiss()">
+        <span>&times;</span>
+    </button>
+</div>
+
+<div class="modal-body">
+    <form class="user" (ngSubmit)="Submit()" [formGroup]="form">
+        <div class="form-group">
+            <input type="text" class="form-control form-control-user" formControlName="Username"
+                id="Username" placeholder="User name">
+            <div *ngIf="(form.controls['Username'].touched || submitted) && form.controls['Username'].errors != null">
+                This field is mandatory.
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control form-control-user" formControlName="Email_Address" id="Email_Address"
+                placeholder="Email Address">
+                <div *ngIf="(form.controls['Email_Address'].touched || submitted) && form.controls['Email_Address'].errors != null">
+                This field is mandatory.
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control form-control-user" formControlName="Password" id="Password"
+                placeholder="Password">
+                <div *ngIf="(form.controls['Password'].touched || submitted) && form.controls['Password'].errors != null">
+                This field is mandatory.
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-user btn-block">
+            Save
+        </button>
+    </form>
+</div>

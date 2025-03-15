@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { AuthRoutingModule } from './auth-routing.module';
 import { RegisterComponent } from './register/register.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   imports: [
@@ -13,6 +14,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     FormsModule,
     ReactiveFormsModule,
     AuthRoutingModule,
+    ToastrModule.forRoot()
   ],
   declarations: [
     LoginComponent,

@@ -6,8 +6,14 @@ import { TablesComponent } from '../../shared/components/tables/tables.component
 import { BordersComponent } from '../../shared/components/borders/borders.component';
 import { ButttonsComponent } from '../../shared/components/butttons/butttons.component';
 import { ColorsComponent } from '../../shared/components/colors/colors.component';
+import { ListingsComponent } from './listings/listings.component';
+import { LargeimageviewComponent } from './largeimageview/largeimageview.component';
 
 const routes: Routes = [
+  {
+    path: 'largeimage/:id',
+    component: LargeimageviewComponent,
+  },
   {
     path: '',
     component: PagesComponent,
@@ -19,7 +25,7 @@ const routes: Routes = [
       },
       {
         path: 'listings',
-        component: TablesComponent,
+        component: ListingsComponent,
       },
       {
         path: 'borders',
