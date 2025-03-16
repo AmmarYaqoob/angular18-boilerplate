@@ -10,6 +10,8 @@ import { NavbarComponent } from '../../shared/header/navbar/navbar.component';
 import { SharedModule } from '../../shared/shared.module';
 import { ListingsComponent } from './listings/listings.component';
 import { AddeditmembersmodalComponent } from './modals/addeditmembersmodal/addeditmembersmodal.component';
+import { RolesComponent } from './roles/roles.component';
+import { AddeditrolesComponent } from './modals/addeditroles/addeditroles.component';
 
 @NgModule({
   imports: [
@@ -25,7 +27,9 @@ import { AddeditmembersmodalComponent } from './modals/addeditmembersmodal/added
     PagesComponent,
     HomeComponent,
     ListingsComponent,
-    AddeditmembersmodalComponent
+    RolesComponent,
+    AddeditmembersmodalComponent,
+    AddeditrolesComponent
   ],
 })
 export class PagesModule { }

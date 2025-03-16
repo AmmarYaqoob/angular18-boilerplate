@@ -8,6 +8,7 @@ import { ButttonsComponent } from '../../shared/components/butttons/butttons.com
 import { ColorsComponent } from '../../shared/components/colors/colors.component';
 import { ListingsComponent } from './listings/listings.component';
 import { LargeimageviewComponent } from './largeimageview/largeimageview.component';
+import { RolesComponent } from './roles/roles.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
       {
         path: 'listings',
         component: ListingsComponent,
+      },
+      {
+        path: 'roles',
+        component: RolesComponent,
       },
       {
         path: 'borders',
