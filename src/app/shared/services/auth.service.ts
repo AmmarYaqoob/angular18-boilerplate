@@ -12,13 +12,16 @@ export class AuthService {
 
     constructor(private http: HttpClient) { }
 
-    login(payload: User) {
+    Login(payload: User) {
         return this.http.post<Response>(`${this.apiUrl}/login`, payload).toPromise();
     }
-    signup(payload: User) {
+    Signup(payload: User) {
         return this.http.post<Response>(`${this.apiUrl}/signup`, payload).toPromise();
     }
-    logout(User_ID: User) {
-        return this.http.get<Response>(`${this.apiUrl}/logout?User_ID=${User_ID}`).toPromise();
+    Logout(ID: User) {
+        return this.http.get<Response>(`${this.apiUrl}/logout?ID=${ID}`).toPromise();
+    }
+    ForgetPassword(Email: string) {
+        return this.http.get<Response>(`${this.apiUrl}/forgetpassword?Email=${Email}`).toPromise();
     }
 }

@@ -18,13 +18,13 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let member of Members">
-                            <td>{{member.Username}}</td>
-                            <td>{{member.Email_Address}}</td>
+                            <td>{{member.UserName}}</td>
+                            <td>{{member.Email}}</td>
                             <td>{{member.Password}}</td>
                             <td>{{member.Created_Date}}</td>
                             <td>
-                                <button (click)="Delete(member.User_ID)" class="btn btn-danger">Delete</button>
-                                <button (click)="AddEditModal(member.User_ID)" class="btn btn-primary">Edit</button>
+                                <button (click)="Delete(member.ID)" class="btn btn-danger">Delete</button>
+                                <button (click)="AddEditModal(member.ID)" class="btn btn-primary">Edit</button>
                             </td>
                         </tr>
                     </tbody>

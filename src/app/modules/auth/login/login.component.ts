@@ -20,7 +20,7 @@ export class LoginComponent {
     private toastService: ToastrService
   ) {
     this.loginForm = this.fb.group({
-      Email_Address: ['', [Validators.required, Validators.email]],
+      Email: ['', [Validators.required, Validators.email]],
       Password: ['', [Validators.required, Validators.minLength(5)]],
     });
   }
@@ -28,10 +28,10 @@ export class LoginComponent {
   async login() {
     if (this.loginForm.valid) {
       const obj: User = this.loginForm.value;
-      let auth = await this.authService.login(obj);
-      if (auth?.Is_Success) {
+      let auth = await this.authService.Login(obj);
+      if (auth?.IsSuccess) {
         localStorage.setItem('accessToken', auth?.Data.Token.toString());
-        localStorage.setItem('User_ID', auth?.Data.User_ID.toString());
+        localStorage.setItem('ID', auth?.Data.ID.toString());
         this.router.navigate(['']);
       } else {
         this.toastService.error(auth?.Message || '');

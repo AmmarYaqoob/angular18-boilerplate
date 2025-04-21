@@ -12,16 +12,16 @@
                         </div>
                         <form class="user" (ngSubmit)="Submit()" [formGroup]="registerForm">
                             <div class="form-group">
-                                <input type="text" class="form-control form-control-user" id="Username"
-                                    placeholder="Username" formControlName="Username">
-                                <div *ngIf="(registerForm.controls['Username'].touched || submitted) && registerForm.controls['Username'].errors != null">
+                                <input type="text" class="form-control form-control-user" id="UserName"
+                                    placeholder="UserName" formControlName="UserName">
+                                <div *ngIf="(registerForm.controls['UserName'].touched || submitted) && registerForm.controls['UserName'].errors != null">
                                     This is required field.
                                 </div>
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-control form-control-user" id="Email_Address"
-                                    placeholder="Email Address" formControlName="Email_Address">
-                                <div *ngIf="(registerForm.controls['Email_Address'].touched || submitted) && registerForm.get('Email_Address')?.hasError('email')">
+                                <input type="email" class="form-control form-control-user" id="Email"
+                                    placeholder="Email Address" formControlName="Email">
+                                <div *ngIf="(registerForm.controls['Email'].touched || submitted) && registerForm.get('Email')?.hasError('email')">
                                     Please enter a valid email address.
                                 </div>
                             </div>

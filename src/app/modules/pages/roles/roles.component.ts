@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { Roles } from '../../../shared/interfaces/roles.interface';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ToastrService } from 'ngx-toastr';
 import { RolesService } from '../../../shared/services/roles.service';
 import { AddeditrolesComponent } from '../modals/addeditroles/addeditroles.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-roles',
@@ -15,8 +15,7 @@ export class RolesComponent {
 
   constructor(
     private modalService: NgbModal,
-    private memberService: RolesService,
-    private toastService: ToastrService,
+    private roleService: RolesService,
   ) { }
 
   ngOnInit() {
@@ -24,17 +23,20 @@ export class RolesComponent {
   }
 
   async Get() {
-    let response = await this.memberService.get();
-    if (response?.Is_Success) {
+    let response = await this.roleService.get();
+    if (response?.IsSuccess) {
       this.Roles = response.Data;
     }
   }
 
   async Delete(ID) {
-    let response = await this.memberService.delete(ID);
-    if (response?.Is_Success) {
-      this.toastService.error(response?.Message);
-      this.Get();
+    let result = await Swal.fire({ title: "Are you sure? you want to delete it?", icon: "warning", showDenyButton: false, showCancelButton: true, denyButtonText: `Yes` })
+    if (result.isConfirmed) {
+      let response = await this.roleService.delete(ID);
+      if (response?.IsSuccess) {
+        await Swal.fire({ icon: "success", title: "Deleted" })
+        this.Get();
+      }
     }
   }
 

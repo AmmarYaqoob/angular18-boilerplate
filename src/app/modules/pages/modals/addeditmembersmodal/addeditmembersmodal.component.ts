@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { RolesService } from '../../../../shared/services/roles.service';
 import { Roles } from '../../../../shared/interfaces/roles.interface';
+import { UserService } from '../../../../shared/services/users.service';
+import { User } from '../../../../shared/interfaces/user.interface';
 
 @Component({
   selector: 'app-addeditmembersmodal',
@@ -16,12 +18,14 @@ export class AddeditmembersmodalComponent implements OnInit {
   @Input() ID: number;
   form: FormGroup;
   submitted: boolean = false;
+  roles: Array<Roles>;
 
   constructor(
     public activeModal: NgbActiveModal,
+    private userService: UserService,
     private roleService: RolesService,
     private toastService: ToastrService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
   ) {
     this.form = this.formBuilder.group({
       Name: ['', [Validators.required]],
@@ -36,11 +40,13 @@ export class AddeditmembersmodalComponent implements OnInit {
   }
 
   async Get(ID: number) {
-    let response = await this.roleService.getbyid(ID);
-    if (response?.Is_Success) {
+    let response = await this.userService.getbyid(ID);
+    if (response?.IsSuccess) {
       this.form = this.formBuilder.group({
-        Name: response.Data.Name,
-        Description: response.Data.Description,
+        ID: response.Data.ID,
+        Username: response.Data.Username,
+        Email: response.Data.Email,
+        Password: response.Data.Password,
       });
     }
   }
@@ -48,18 +54,25 @@ export class AddeditmembersmodalComponent implements OnInit {
   async Submit() {
     this.submitted = !this.submitted;
     if (this.form.valid) {
-      const obj: Roles = this.form.value;
+      const obj: User = this.form.value;
       let response;
       if (this.ID) {
-        response = await this.roleService.update(obj);
+        response = await this.userService.update(obj);
       } else {
-        response = await this.roleService.add(obj);
+        response = await this.userService.add(obj);
       }
-      if (response?.Is_Success) {
-        this.toastService.error(response?.Message || '');
+      if (response?.IsSuccess) {
+        this.toastService.success(response?.Message || '');
         this.modalStatus.emit('Modal Closes');
         this.activeModal.dismiss();
       }
+    }
+  }
+
+  async GetRoles() {
+    let response = await this.roleService.get();
+    if (response?.IsSuccess) {
+      this.roles = response.Data;
     }
   }
 }

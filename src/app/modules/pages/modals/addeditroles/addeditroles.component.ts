@@ -23,6 +23,7 @@ export class AddeditrolesComponent implements OnInit {
     private formBuilder: FormBuilder
   ) {
     this.form = this.formBuilder.group({
+      ID: [this.ID],
       Name: ['', [Validators.required]],
       Description: ['', [Validators.required]],
     });
@@ -36,7 +37,7 @@ export class AddeditrolesComponent implements OnInit {
 
   async Get(ID: number) {
     let response = await this.roleService.getbyid(ID);
-    if (response?.Is_Success) {
+    if (response?.IsSuccess) {
       this.form = this.formBuilder.group({
         Name: response.Data.Name,
         Description: response.Data.Description,
@@ -50,11 +51,12 @@ export class AddeditrolesComponent implements OnInit {
       const obj: Roles = this.form.value;
       let response;
       if (this.ID) {
+        this.form.value.ID = this.ID;
         response = await this.roleService.update(obj);
       } else {
         response = await this.roleService.add(obj);
       }
-      if (response?.Is_Success) {
+      if (response?.IsSuccess) {
         this.toastService.success(response?.Message || '');
         this.modalStatus.emit('Modal Closes');
         this.activeModal.dismiss();

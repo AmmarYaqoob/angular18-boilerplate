@@ -1,5 +1,5 @@
 export interface Response {
-    Is_Success: boolean;
+    IsSuccess: boolean;
     Message: string;
     Token: object;
     Error: string;

@@ -13,11 +13,11 @@ export class HeaderComponent {
     private authService: AuthService,
     private router: Router,
   ) {
-    this.user = localStorage.getItem('User_ID');
+    this.user = localStorage.getItem('ID');
   }
 
   async Logout() {
-    await this.authService.logout(this.user);
+    await this.authService.Logout(this.user);
     localStorage.clear();
     this.router.navigate(['auth']);
   }

@@ -6,17 +6,21 @@
 
 <div class="modal-body">
     <form class="user" (ngSubmit)="Submit()" [formGroup]="form">
+        <div class="form-group d-none">
+            <input type="text" class="form-control form-control-user" formControlName="ID"
+                id="ID" placeholder="ID">
+        </div>
         <div class="form-group">
-            <input type="text" class="form-control form-control-user" formControlName="Username"
-                id="Username" placeholder="User name">
-            <div *ngIf="(form.controls['Username'].touched || submitted) && form.controls['Username'].errors != null">
+            <input type="text" class="form-control form-control-user" formControlName="UserName"
+                id="Usernameaa" placeholder="User name">
+            <div *ngIf="(form.controls['UserName'].touched || submitted) && form.controls['UserName'].errors != null">
                 This field is mandatory.
             </div>
         </div>
         <div class="form-group">
-            <input type="text" class="form-control form-control-user" formControlName="Email_Address" id="Email_Address"
+            <input type="text" class="form-control form-control-user" formControlName="Email" id="Email"
                 placeholder="Email Address">
-                <div *ngIf="(form.controls['Email_Address'].touched || submitted) && form.controls['Email_Address'].errors != null">
+                <div *ngIf="(form.controls['Email'].touched || submitted) && form.controls['Email'].errors != null">
                 This field is mandatory.
             </div>
         </div>
