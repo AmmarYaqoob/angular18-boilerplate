@@ -1,8 +1,8 @@
 <div class="container-fluid">
-    <button (click)="AddEditModal(0)" class="btn btn-primary">Add Member</button>
+    <button (click)="AddEditModal(0)" class="btn btn-primary">Add User</button>
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Members</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Users</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -11,7 +11,8 @@
                         <tr>
                             <th>Name</th>
                             <th>Email</th>
-                            <th>Password</th>
+                            <th>Logged In</th>
+                            <!-- <th>Password</th> -->
                             <th>Created date</th>
                             <th>Actions</th>
                         </tr>
@@ -20,8 +21,9 @@
                         <tr *ngFor="let member of Members">
                             <td>{{member.UserName}}</td>
                             <td>{{member.Email}}</td>
-                            <td>{{member.Password}}</td>
-                            <td>{{member.Created_Date}}</td>
+                            <td>{{member.IsLoggedIn }}</td>
+                            <!-- <td>{{member.Password}}</td> -->
+                            <td>{{member.CreatedDate | date}}</td>
                             <td>
                                 <button (click)="Delete(member.ID)" class="btn btn-danger">Delete</button>
                                 <button (click)="AddEditModal(member.ID)" class="btn btn-primary">Edit</button>

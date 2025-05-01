@@ -25,11 +25,12 @@ export class AddeditmembersmodalComponent implements OnInit {
     private userService: UserService,
     private roleService: RolesService,
     private toastService: ToastrService,
-    private formBuilder: FormBuilder,
+    private fb: FormBuilder,
   ) {
-    this.form = this.formBuilder.group({
-      Name: ['', [Validators.required]],
-      Description: ['', [Validators.required]],
+    this.form = this.fb.group({
+      UserName: ['', [Validators.required]],
+      Email: ['', [Validators.required, Validators.email]],
+      Password: ['', [Validators.required, Validators.minLength(6)]],
     });
   }
 
@@ -42,11 +43,10 @@ export class AddeditmembersmodalComponent implements OnInit {
   async Get(ID: number) {
     let response = await this.userService.getbyid(ID);
     if (response?.IsSuccess) {
-      this.form = this.formBuilder.group({
+      this.form = this.fb.group({
         ID: response.Data.ID,
-        Username: response.Data.Username,
+        UserName: response.Data.UserName,
         Email: response.Data.Email,
-        Password: response.Data.Password,
       });
     }
   }
@@ -65,6 +65,8 @@ export class AddeditmembersmodalComponent implements OnInit {
         this.toastService.success(response?.Message || '');
         this.modalStatus.emit('Modal Closes');
         this.activeModal.dismiss();
+      } else {
+        this.toastService.info(response?.Message || '', 'Info');
       }
     }
   }
